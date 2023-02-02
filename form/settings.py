@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'form1',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken'
 ]
@@ -45,7 +46,6 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-
 
     ],
     'DEFAULT_AUTHENTICATION_CLASSES':[
@@ -59,6 +59,8 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -80,6 +82,13 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',  # for localhost (REACT Default)
+    'http://13.235.142.31:3000',  # for network 
+    'http://localhost:8000',  # for localhost (Developlemt)
+    'http://13.235.142.31:8000',
 ]
 
 WSGI_APPLICATION = 'form.wsgi.application'
